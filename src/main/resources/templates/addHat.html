@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Hat</title>
+</head>
+
+
+<body>
+
+<h2> Add Hat </h2>
+
+<form th:action="@{/addHat}" th:object="${hat}" method="post">
+	<label for="name">Name:</label><br>
+	<input type="text" id="name" name="name"><br>
+	
+	<label for="price">Price:</label><br>
+	<input type="number" id="price" name="price"><br>
+	
+	<label for="quantity">Quantity:</label><br>
+	<input type="number" id="quantity" name="quantity"><br>
+	
+	<label for="employeeName">Employee Name:</label><br>
+	<select th:field="*{employeeName}">
+		<option th:each="l : ${lawyers}" th:value="${l.name}" th:text="${l.name}"></option>
+    </select>    <br>
+    
+   
+	<input type="submit" value="Add Hat">
+	</form>
+	
+	
+    <br>
+    <a href="/">Back to Home</a>
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Hats</title>
+</head>
+<body>
+
+<h2>View Hats</h2>
+
+<table border="1">
+
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Employee Name</th>
+	
+	</tr>
+	
+	<tr th:each="h :${hats}">
+	<td th:text="${h.id}"></td>
+	<td th:text="${h.name}"></td>
+	<td th:text="${h.price}"></td>
+	<td th:text="${h.quantity}"></td>
+	<td th:text="${h.employeeName}"></td>
+	<td>
+        <a th:href="@{/deleteHat/{id} (id=${h.id})}">Delete</a>
+    </td>
+    <td>
+	    <span th:if="${h.quantity > 0}">
+	        | <a th:href="@{/purchaseHat/{id} (id=${h.id})}">Purchase</a>
+	    </span>
+	    <span th:if="${h.quantity <= 0}" style="color: red; font-weight: bold;">
+	        Sold Out
+	    </span>
+	</td>
+	</tr>
+	
+	</table>
+	
+	<br>
+	<a href="/">Back to Home</a>
+
+</body>
+</html>
